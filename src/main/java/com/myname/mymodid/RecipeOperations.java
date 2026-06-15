@@ -14,7 +14,7 @@ public class RecipeOperations {
             net.minecraft.item.crafting.IRecipe recipe = iterator.next();
             net.minecraft.item.ItemStack output = recipe.getRecipeOutput();
 
-            // Jeśli ten przepis tworzy poszukiwany przedmiot z LOTR, usuwamy go z gry
+
             if (output != null && output.getItem() == itemToRemove) {
                 iterator.remove();
             }
@@ -28,11 +28,10 @@ public class RecipeOperations {
 
         if (cpw.mods.fml.common.Loader.isModLoaded("lotr")) {
             try {
-                // 1. POBIERZ POPRAWNĄ LISTĘ PRZEPISÓW DLA STOŁU ANGMARU
-                // Nazwa z Twojego screena: angmarRecipes
+
                 java.util.List<net.minecraft.item.crafting.IRecipe> angmarList = lotr.common.recipe.LOTRRecipes.angmarRecipes;
 
-                // 2. USUŃ STARY PRZEPIS (Topór z Angmaru)
+
                 if (angmarList != null) {
                     angmarList.removeIf(
                         recipe -> recipe != null && recipe.getRecipeOutput() != null
@@ -40,12 +39,10 @@ public class RecipeOperations {
                             .getItem() == lotr.common.LOTRMod.battleaxeAngmar);
                 }
 
-                // 3. DODAJ NOWY PRZEPIS DO STOŁU ANGMARU
-                // Ponieważ stół korzysta ze standardowych obiektów IRecipe, najbezpieczniej jest
-                // stworzyć zwykły przepis i wrzucić go bezpośrednio na listę za pomocą .add()
+
                 net.minecraft.item.crafting.IRecipe newRecipe = new net.minecraft.item.crafting.ShapedRecipes(
                     3,
-                    3, // Szerokość i wysokość siatki craftingu (3x3)
+                    3,
                     new net.minecraft.item.ItemStack[] { new net.minecraft.item.ItemStack(lotr.common.LOTRMod.orcSteel),
                         null, new net.minecraft.item.ItemStack(lotr.common.LOTRMod.orcSteel), null,
                         new net.minecraft.item.ItemStack(lotr.common.LOTRMod.orcSteel), null, null,
