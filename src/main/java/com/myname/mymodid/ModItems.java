@@ -144,7 +144,7 @@ public class ModItems {
             .setUnlocalizedName("wickedDwarfBoots")
             .setTextureName(MyMod.MODID+":wicked_dwarf_boots")
             .setCreativeTab(CreativeTabs.tabCombat);
-
+//
         register(wickedDwarfChestplateDurnor,"wicked_Dwarf_Chestplate_Durnor");
         register(darkMithrillBoots, "dark_Mithrill_Boots");
         register(darkMithirllHelmet,"dark_Mithirll_Helmet");
