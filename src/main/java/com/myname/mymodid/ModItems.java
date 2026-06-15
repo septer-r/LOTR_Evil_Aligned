@@ -30,6 +30,7 @@ public class ModItems {
             .setTextureName("mymod:darkMithrillBoots")
             .setCreativeTab(CreativeTabs.tabCombat);
 
+
     darkMithirllHelmet = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
             .setUnlocalizedName("darkMithirllHelmet")
             .setTextureName("mymodid:dark_Mithirll_Helmet")
