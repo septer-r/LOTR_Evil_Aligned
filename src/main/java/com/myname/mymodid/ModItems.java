@@ -146,6 +146,26 @@ public class ModItems {
             .setCreativeTab(CreativeTabs.tabCombat);
 //
         register(wickedDwarfBootsDurnor, "wicked_Dwarf_Boots_Durnor");
+
+
+
+
+
+        register(wicked_Dwarf_Helmet_Silver,"wicked_Dwarf_Helmet_Silver");
+        register(wicked_Dwarf_Chestplate_Silver,"wicked_Dwarf_Chestplate_Silver");
+        register(wicked_Dwarf_Leggings_Silver,"wicked_Dwarf_Leggings_Silver");
+        register(wicked_Dwarf_Boots_Silver,"wicked_Dwarf_Boots_Silver");
+
+        register(wicked_Dwarf_Helmet_Gold,"wicked_Dwarf_Helmet_Gold");
+        register(wicked_Dwarf_Chestplate_Gold,"wicked_Dwarf_Chestplate_Gold");
+        register(wicked_Dwarf_Leggings_Gold,"wicked_Dwarf_Leggings_Gold");
+        register(wicked_Dwarf_Boots_Gold,"wicked_Dwarf_Boots_Gold");
+
+
+
+
+
+
         register(wickedDwarfChestplateDurnor,"wicked_Dwarf_Chestplate_Durnor");
         register(darkMithrillBoots, "dark_Mithrill_Boots");
         register(darkMithirllHelmet,"dark_Mithirll_Helmet");
@@ -160,6 +180,19 @@ public class ModItems {
         register(wicked_Dwarf_Chestplate_Mithril, "wicked_Dwarf_Chestplate_Mithril");
         register(wicked_Dwarf_Leggings_Mithril, "wicked_Dwarf_Leggings_Mithril");
         register(wicked_Dwarf_Boots_Mithril, "wicked_Dwarf_Boots_Mithril");
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
         private static void register(Item item, String registryName) {
