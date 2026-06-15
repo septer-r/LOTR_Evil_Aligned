@@ -12,6 +12,7 @@ public class ModItems {
 
     // Krok 1 inicjalizacja zmiennej aka dodanie przedmiotu wstepnie
 
+    // Iroc to dobry ziom
 
     private static final Log log = LogFactory.getLog(ModItems.class);
 
