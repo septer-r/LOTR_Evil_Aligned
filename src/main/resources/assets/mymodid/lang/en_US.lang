@@ -1,11 +1,26 @@
 item.nerdSword.name=Legendary Sword of King SepteR I
-item.evilDwarfChestPlate.name=Wicked Dwarf Chestplate
+
 item.wickedDwarfHelmet.name=Wicked Dwarf Helmet
+item.evilDwarfChestPlate.name=Wicked Dwarf Chestplate
 item.wickedDwarfPants.name=Wicked Dwarf Pants
 item.wickedDwarfBoots.name=Wicked Dwarf Boots
-item.wickedDwarfChestplateDurnor.name=Durnor Chestplate
-item.wicked_Dwarf_Boots_Durnor.neme=Wicked Dwarf Durnor Boots
-item.wicked_Dwarf_Helmet_Mithril.neme=Wicked Dwarf Mithril Helmet
-item.wicked_Dwarf_Chestplate_Mithril.neme=Wicked Dwarf Mithril Chestplate
-item.wicked_Dwarf_Leggings_Mithril.neme=Wicked Dwarf Mithril Leggings
-item.wicked_Dwarf_Boots_Mithril.neme=Wicked Dwarf Mithril Boots
+
+item.wicked_Dwarf_Helmet_Mithril.name=Wicked Dwarf Mithril Helmet
+item.wicked_Dwarf_Chestplate_Mithril.name=Wicked Dwarf Mithril Chestplate
+item.wicked_Dwarf_Leggings_Mithril.name=Wicked Dwarf Mithril Leggings
+item.wicked_Dwarf_Boots_Mithril.name=Wicked Dwarf Mithril Boots
+
+item.wicked_Dwarf_Helmet_Durnor.name=Wicked Dwarf Durnor Helmet
+item.wicked_Dwarf_Chestplate_Durnor.name=Wicked Dwarf Durnor Chestplate
+item.wicked_Dwarf_Leggings_Durnor.name=Wicked Dwarf Durnor Leggings
+item.wicked_Dwarf_Boots_Durnor.name=Wicked Dwarf Durnor Boots
+
+item.wicked_Dwarf_Helmet_Silver.name=Wicked Dwarf Silver Helmet
+item.wicked_Dwarf_Chestplate_Silver.name=Wicked Dwarf Silver Chestplate
+item.wicked_Dwarf_Leggings_Silver.name=Wicked Dwarf Silver Leggings
+item.wicked_Dwarf_Boots_Silver.name=Wicked Dwarf Silver Boots
+
+item.wicked_Dwarf_Helmet_Gold.name=Wicked Dwarf Golden Helmet
+item.wicked_Dwarf_Chestplate_Gold.name=Wicked Dwarf Golden Chestplate
+item.wicked_Dwarf_Leggings_Gold.name=Wicked Dwarf Golden Leggings
+item.wicked_Dwarf_Boots_Gold.name=Wicked Dwarf Golden Boots
