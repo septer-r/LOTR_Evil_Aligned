@@ -33,7 +33,7 @@ public class ModItems {
             .setCreativeTab(CreativeTabs.tabCombat);
 
         nerdSword = new ItemNerdSword(ModMaterials.NERD_MATERIAL)
-            .setUnlocalizedName("nerdSword")
+            .setUnlocalizedName("nerdBlorfSword")
             .setTextureName("mymodid:nerd_sword")
             .setCreativeTab(CreativeTabs.tabCombat);
 
