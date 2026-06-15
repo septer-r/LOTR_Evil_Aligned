@@ -42,11 +42,11 @@ public class ModItems {
     public static Item wicked_Dwarf_Helmet_Durnor;
     public static Item wickedDwarfChestplateDurnor;
     public static Item wicked_Dwarf_Leggings_Durnor;
-    public static Item wicked_Dwarf_Boots_Durnor;
+    public static Item wickedDwarfBootsDurnor;
 
     public static void registerItems() {
 
-        wicked_Dwarf_Helmet_Silver = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Helmet_Silver = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Silver")
             .setTextureName("mymod:wicked_Dwarf_Helmet_Silver")
             .setCreativeTab(CreativeTabs.tabCombat);
@@ -54,16 +54,16 @@ public class ModItems {
             .setUnlocalizedName("wicked_Dwarf_Chestplate_Silver")
             .setTextureName("mymod:wicked_Dwarf_Chestplate_Silver")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Leggings_Silver = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Leggings_Silver = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 2)
             .setUnlocalizedName("wicked_Dwarf_Leggings_Silver")
             .setTextureName("mymod:wicked_Dwarf_Leggings_Silver")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Boots_Silver = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Boots_Silver = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 3)
             .setUnlocalizedName("wicked_Dwarf_Boots_Silver")
             .setTextureName("mymod:wicked_Dwarf_Boots_Silver")
             .setCreativeTab(CreativeTabs.tabCombat);
 
-        wicked_Dwarf_Helmet_Gold = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Helmet_Gold = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Gold")
             .setTextureName("mymod:wicked_Dwarf_Helmet_Gold")
             .setCreativeTab(CreativeTabs.tabCombat);
@@ -71,16 +71,16 @@ public class ModItems {
             .setUnlocalizedName("wicked_Dwarf_Chestplate_Gold")
             .setTextureName("mymod:wicked_Dwarf_Chestplate_Gold")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Leggings_Gold = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Leggings_Gold = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 2)
             .setUnlocalizedName("wicked_Dwarf_Leggings_Gold")
             .setTextureName("mymod:wicked_Dwarf_Leggings_Gold")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Boots_Gold = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Boots_Gold = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 3)
             .setUnlocalizedName("wicked_Dwarf_Boots_Gold")
             .setTextureName("mymod:wicked_Dwarf_Boots_Gold")
             .setCreativeTab(CreativeTabs.tabCombat);
 
-        wicked_Dwarf_Helmet_Mithril = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Helmet_Mithril = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Mithril")
             .setTextureName("mymod:wicked_Dwarf_Helmet_Mithril")
             .setCreativeTab(CreativeTabs.tabCombat);
@@ -88,16 +88,16 @@ public class ModItems {
             .setUnlocalizedName("wicked_Dwarf_Chestplate_Mithril")
             .setTextureName("mymod:wicked_Dwarf_Chestplate_Mithril")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Leggings_Mithril = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Leggings_Mithril = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 2)
             .setUnlocalizedName("wicked_Dwarf_Leggings_Mithril")
             .setTextureName("mymod:wicked_Dwarf_Leggings_Mithril")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Boots_Mithril = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Boots_Mithril = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 3)
             .setUnlocalizedName("wicked_Dwarf_Boots_Mithril")
             .setTextureName("mymod:wicked_Dwarf_Boots_Mithril")
             .setCreativeTab(CreativeTabs.tabCombat);
 
-        wicked_Dwarf_Helmet_Durnor = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Helmet_Durnor = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Durnor")
             .setTextureName("mymod:wicked_Dwarf_Helmet_Durnor")
             .setCreativeTab(CreativeTabs.tabCombat);
@@ -105,13 +105,13 @@ public class ModItems {
             .setUnlocalizedName("wickedDwarfChestplateDurnor")
             .setTextureName(MyMod.MODID+":wicked_Dwarf_Chestplate_Durnor")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Leggings_Durnor = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+        wicked_Dwarf_Leggings_Durnor = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 2)
             .setUnlocalizedName("wicked_Dwarf_Leggings_Durnor")
             .setTextureName("mymod:wicked_Dwarf_Leggings_Durnor")
             .setCreativeTab(CreativeTabs.tabCombat);
-        wicked_Dwarf_Boots_Durnor = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
-            .setUnlocalizedName("wicked_Dwarf_Boots_Durnor")
-            .setTextureName("mymod:wicked_Dwarf_Boots_Durnor")
+        wickedDwarfBootsDurnor = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 3)
+            .setUnlocalizedName("wickedDwarfBootsDurnor")
+            .setTextureName(MyMod.MODID+":wicked_Dwarf_Boots_Durnor")
             .setCreativeTab(CreativeTabs.tabCombat);
 
         darkMithrillBoots = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
@@ -145,18 +145,24 @@ public class ModItems {
             .setTextureName(MyMod.MODID+":wicked_dwarf_boots")
             .setCreativeTab(CreativeTabs.tabCombat);
 //
+        register(wickedDwarfBootsDurnor, "wicked_Dwarf_Boots_Durnor");
         register(wickedDwarfChestplateDurnor,"wicked_Dwarf_Chestplate_Durnor");
         register(darkMithrillBoots, "dark_Mithrill_Boots");
         register(darkMithirllHelmet,"dark_Mithirll_Helmet");
         register(nerdSword, "nerd_sword");
         register(wickedDwarfChestplate, "evil_dwarf_chestplate");
         register(wickedDwarfHelmet,"wicked_dwarf_helmet");
+        register(wicked_Dwarf_Leggings_Durnor, "wicked_Dwarf_Leggings_Durnor");
+        register(wicked_Dwarf_Helmet_Durnor, "wicked_Dwarf_Helmet_Durnor");
         register(wickedDwarfPants,"wicked_dwarf_pants");
         register(wickedDwarfBoots,"wicked_dwarf_boots");
+        register(wicked_Dwarf_Helmet_Mithril, "wicked_Dwarf_Helmet_Mithril");
+        register(wicked_Dwarf_Chestplate_Mithril, "wicked_Dwarf_Chestplate_Mithril");
+        register(wicked_Dwarf_Leggings_Mithril, "wicked_Dwarf_Leggings_Mithril");
+        register(wicked_Dwarf_Boots_Mithril, "wicked_Dwarf_Boots_Mithril");
     }
 
-
-    private static void register(Item item, String registryName) {
+        private static void register(Item item, String registryName) {
         GameRegistry.registerItem(item, registryName);
     }
 }
