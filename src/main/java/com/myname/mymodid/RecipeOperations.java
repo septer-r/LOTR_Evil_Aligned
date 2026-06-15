@@ -20,7 +20,7 @@ public class RecipeOperations {
             }
         }
     }
-d
+
     public static void changeLOTRRecipe(){
 
             cpw.mods.fml.common.registry.GameRegistry.addRecipe(
