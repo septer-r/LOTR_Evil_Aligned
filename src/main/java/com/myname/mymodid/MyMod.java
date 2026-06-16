@@ -48,6 +48,7 @@ public class MyMod {
 
         removeRecipe(lotr.common.LOTRMod.mithrilMail);
 
+
         proxy.postInit(event);
     }
 
