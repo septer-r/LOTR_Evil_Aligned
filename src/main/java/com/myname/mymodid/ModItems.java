@@ -15,10 +15,6 @@ import org.apache.commons.logging.LogFactory;
 
 public class ModItems {
 
-    // Krok 1 inicjalizacja zmiennej aka dodanie przedmiotu wstepnie
-
-    // Iroc to dobry ziom
-
     private static final Log log = LogFactory.getLog(ModItems.class);
 
 
@@ -67,11 +63,19 @@ public class ModItems {
     public static void registerItems() {
 
 
-        evilQuestBook = new ItemBook()
+        evilQuestBook = new ItemEvilQuestBook()
             .setUnlocalizedName("evilQuestBook")
             .setTextureName(MyMod.MODID+":evil_Quest_Book")
             .setCreativeTab(CreativeTabs.tabCombat);
 
+
+        /*
+
+        Jak nie masz pomyslu co robic to ustandrayzuj nazwy zmiennych oraz tekstur, unlocalizedenamey i registry name'y
+
+
+                :)
+        */
 
         wicked_Dwarf_Helmet_Silver = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Silver")
