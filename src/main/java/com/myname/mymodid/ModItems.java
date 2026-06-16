@@ -6,8 +6,10 @@ import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRenderGold;
 import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRenderMithirll;
 import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRender;
 import cpw.mods.fml.common.registry.GameRegistry;
+import lotr.common.item.LOTRItemCrossbow;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBook;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -18,6 +20,20 @@ public class ModItems {
     // Iroc to dobry ziom
 
     private static final Log log = LogFactory.getLog(ModItems.class);
+
+
+    public static Item hobbitSlayer;
+
+    public static Item evilQuestBook;
+
+
+
+
+
+
+
+
+
 
     public static Item darkMithirllHelmet;
     public static Item darkMithrillBoots;
@@ -49,6 +65,13 @@ public class ModItems {
     public static Item wickedDwarfBootsDurnor;
 
     public static void registerItems() {
+
+
+        evilQuestBook = new ItemBook()
+            .setUnlocalizedName("evilQuestBook")
+            .setTextureName(MyMod.MODID+":evil_Quest_Book")
+            .setCreativeTab(CreativeTabs.tabCombat);
+
 
         wicked_Dwarf_Helmet_Silver = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Silver")
@@ -148,13 +171,11 @@ public class ModItems {
             .setUnlocalizedName("wickedDwarfBoots")
             .setTextureName(MyMod.MODID+":wicked_dwarf_boots")
             .setCreativeTab(CreativeTabs.tabCombat);
-//
+
+
+        register(evilQuestBook,"evil_Quest_Book");
+
         register(wickedDwarfBootsDurnor, "wicked_Dwarf_Boots_Durnor");
-
-
-
-
-
         register(wicked_Dwarf_Helmet_Silver,"wicked_Dwarf_Helmet_Silver");
         register(wicked_Dwarf_Chestplate_Silver,"wicked_Dwarf_Chestplate_Silver");
         register(wicked_Dwarf_Leggings_Silver,"wicked_Dwarf_Leggings_Silver");
