@@ -1,9 +1,9 @@
 item.nerdSword.name=Legendary Sword of King SepteR I
 
-item.wickedDwarfHelmet.name=Wicked Dwarf Helmet
-item.evilDwarfChestPlate.name=Wicked Dwarf Chestplate
-item.wickedDwarfPants.name=Wicked Dwarf Pants
-item.wickedDwarfBoots.name=Wicked Dwarf Boots
+item.wicked_Dwarf_Helmet.name=Wicked Dwarf Helmet
+item.wicked_Dwarf_Chestplate.name=Wicked Dwarf Chestplate
+item.wicked_Dwarf_Leggings.name=Wicked Dwarf Leggings
+item.wicked_Dwarf_Boots.name=Wicked Dwarf Boots
 
 item.wicked_Dwarf_Helmet_Mithril.name=Wicked Dwarf Mithril Helmet
 item.wicked_Dwarf_Chestplate_Mithril.name=Wicked Dwarf Mithril Chestplate
