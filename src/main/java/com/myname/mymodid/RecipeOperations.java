@@ -14,31 +14,29 @@ public class RecipeOperations {
             net.minecraft.item.crafting.IRecipe recipe = iterator.next();
             net.minecraft.item.ItemStack output = recipe.getRecipeOutput();
 
-
             if (output != null && output.getItem() == itemToRemove) {
                 iterator.remove();
             }
         }
     }
 
-    public static void changeLOTRRecipe(){
+    public static void changeLOTRRecipe() {
 
-            cpw.mods.fml.common.registry.GameRegistry.addRecipe(
-            new net.minecraft.item.ItemStack(lotr.common.LOTRMod.mithrilMail), new Object[] { "D", "D", "S", 'D', Items.brick, 'S', Items.brick, });
+        cpw.mods.fml.common.registry.GameRegistry.addRecipe(
+            new net.minecraft.item.ItemStack(lotr.common.LOTRMod.mithrilMail),
+            new Object[] { "D", "D", "S", 'D', Items.brick, 'S', Items.brick, });
 
         if (cpw.mods.fml.common.Loader.isModLoaded("lotr")) {
             try {
 
                 java.util.List<net.minecraft.item.crafting.IRecipe> angmarList = lotr.common.recipe.LOTRRecipes.angmarRecipes;
 
-
                 if (angmarList != null) {
                     angmarList.removeIf(
                         recipe -> recipe != null && recipe.getRecipeOutput() != null
                             && recipe.getRecipeOutput()
-                            .getItem() == lotr.common.LOTRMod.battleaxeAngmar);
+                                .getItem() == lotr.common.LOTRMod.battleaxeAngmar);
                 }
-
 
                 net.minecraft.item.crafting.IRecipe newRecipe = new net.minecraft.item.crafting.ShapedRecipes(
                     3,
