@@ -29,14 +29,11 @@ public class NerdSwordRenderer implements IItemRenderer {
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
         GL11.glPushMatrix();
 
-
         FMLClientHandler.instance()
             .getClient().renderEngine.bindTexture(TEKSTURA_W_RECE);
 
-
         float scale = 1.7F;
         GL11.glScalef(scale, scale, scale);
-
 
         if (type == ItemRenderType.EQUIPPED_FIRST_PERSON) {
             GL11.glTranslatef(-0.25F, -0.15F, 0.0F);
@@ -44,17 +41,8 @@ public class NerdSwordRenderer implements IItemRenderer {
             GL11.glTranslatef(-0.40F, -0.15F, 0.0025F);
         }
 
-
-        net.minecraft.client.renderer.ItemRenderer.renderItemIn2D(
-            Tessellator.instance,
-            1.0F,
-            0.0F,
-            0.0F,
-            1.0F,
-            32,
-            32,
-            0.0625F
-        );
+        net.minecraft.client.renderer.ItemRenderer
+            .renderItemIn2D(Tessellator.instance, 1.0F, 0.0F, 0.0F, 1.0F, 32, 32, 0.0625F);
 
         GL11.glPopMatrix();
     }

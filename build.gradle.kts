@@ -39,6 +39,9 @@ plugins {
 }
 dependencies{
     implementation(files("libs/LOTRMod v36.15.jar"))
-
+    implementation(files("libs/schematic4j-1.1.0.jar"))
+    runtimeOnly(files("libs/schematic4j-1.1.0.jar"))
     runtimeOnly(files("libs/LOTRMod v36.15.jar"))
+    runtimeOnly(files("libs/slf4j-api-1.7.36.jar"))
+    implementation(files("libs/slf4j-api-1.7.36.jar"))
 }
