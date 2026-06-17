@@ -120,7 +120,7 @@ public class ModItems {
             .setUnlocalizedName("wicked_Dwarf_Boots_Gold")
             .setTextureName(MyMod.MODID+":wicked_Dwarf_Boots_Gold")
             .setCreativeTab(CreativeTabs.tabCombat);
-
+//Rahahaha Prrrrt
         wicked_Dwarf_Helmet_Mithril = new WickedDwarfArmorRenderMithirll(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Mithril")
             .setTextureName(MyMod.MODID+":wicked_Dwarf_Helmet_Mithril")
