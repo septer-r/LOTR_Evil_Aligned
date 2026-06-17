@@ -30,12 +30,13 @@ public class ModItems {
 
     public static Item darkMithirllHelmet;
     public static Item darkMithrillBoots;
+
     public static Item nerdSword;
 
-    public static Item wickedDwarfHelmet;
-    public static Item wickedDwarfChestplate;
-    public static Item wickedDwarfPants;
-    public static Item wickedDwarfBoots;
+    public static Item wicked_Dwarf_Helmet;
+    public static Item wicked_Dwarf_Chestplate;
+    public static Item wicked_Dwarf_Leggings;
+    public static Item wicked_Dwarf_Boots;
 
     public static Item wicked_Dwarf_Helmet_Silver;
     public static Item wicked_Dwarf_Chestplate_Silver;
@@ -53,9 +54,9 @@ public class ModItems {
     public static Item wicked_Dwarf_Boots_Mithril;
 
     public static Item wicked_Dwarf_Helmet_Durnor;
-    public static Item wickedDwarfChestplateDurnor;
+    public static Item wicked_Dwarf_Chestplate_Durnor;
     public static Item wicked_Dwarf_Leggings_Durnor;
-    public static Item wickedDwarfBootsDurnor;
+    public static Item wicked_Dwarf_Boots_Durnor;
 
     public static void registerItems() {
 
@@ -170,9 +171,9 @@ public class ModItems {
             .setTextureName(MyMod.MODID + ":nerd_sword")
             .setCreativeTab(CreativeTabs.tabCombat);
 
-        wickedDwarfChestplate = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
-            .setUnlocalizedName("evilDwarfChestPlate")
-            .setTextureName(MyMod.MODID + ":evil_dwarf_chestplate")
+        wicked_Dwarf_Chestplate = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 1)
+            .setUnlocalizedName("wicked_Dwarf_Chestplate")
+            .setTextureName(MyMod.MODID + ":wicked_Dwarf_Chestplate")
             .setCreativeTab(CreativeTabs.tabCombat);
         wickedDwarfHelmet = new WickedDwarfArmorRender(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wickedDwarfHelmet")
