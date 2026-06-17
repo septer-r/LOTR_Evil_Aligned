@@ -26,10 +26,11 @@ public class ModItems {
 
 
 
-
-
-
-
+    public static Item barrow_Wight_Helmet;
+    public static Item barrow_Wight_Chestplate;
+    public static Item barrow_Wight_Leggings;
+    public static Item barrow_Wight_Boots;
+    public static Item barrow_Wight_Scraps;
 
     public static Item darkMithirllHelmet;
     public static Item darkMithrillBoots;
@@ -76,6 +77,26 @@ public class ModItems {
 
                 :)
         */
+        barrow_Wight_Helmet = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 0)
+            .setUnlocalizedName("barrow_Wight_Helmet")
+            .setTextureName(MyMod.MODID+":barrow_Wight_Helmet")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        barrow_Wight_Chestplate = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 1)
+            .setUnlocalizedName("barrow_Wight_Chestplate")
+            .setTextureName(MyMod.MODID+":barrow_Wight_Chestplate")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        barrow_Wight_Leggings = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 2)
+            .setUnlocalizedName("barrow_Wight_Leggings")
+            .setTextureName(MyMod.MODID+":barrow_Wight_Leggings")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        barrow_Wight_Boots = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 3)
+            .setUnlocalizedName("barrow_Wight_Boots")
+            .setTextureName(MyMod.MODID+":barrow_Wight_Boots")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        barrow_Wight_Scraps = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 3)
+            .setUnlocalizedName("barrow_Wight_Scraps")
+            .setTextureName(MyMod.MODID+":barrow_Wight_Scraps")
+            .setCreativeTab(CreativeTabs.tabCombat);
 
         wicked_Dwarf_Helmet_Silver = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 0)
             .setUnlocalizedName("wicked_Dwarf_Helmet_Silver")
@@ -190,10 +211,11 @@ public class ModItems {
         register(wicked_Dwarf_Leggings_Gold,"wicked_Dwarf_Leggings_Gold");
         register(wicked_Dwarf_Boots_Gold,"wicked_Dwarf_Boots_Gold");
 
-
-
-
-
+        register(barrow_Wight_Helmet, "barrow_Wight_Helmet");
+        register(barrow_Wight_Chestplate, "barrow_Wight_Chestplate");
+        register(barrow_Wight_Leggings, "barrow_Wight_Leggings");
+        register(barrow_Wight_Boots, "barrow_Wight_Boots");
+        register(barrow_Wight_Scraps, "barrow_Wight_Scraps");
 
         register(wickedDwarfChestplateDurnor,"wicked_Dwarf_Chestplate_Durnor");
         register(darkMithrillBoots, "dark_Mithrill_Boots");
