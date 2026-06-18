@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import lotr.common.LOTRMod;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.CompressedStreamTools;
@@ -17,17 +15,17 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.util.Constants;
 
-public class GoodForcesCamp extends WorldGenerator {
+import cpw.mods.fml.common.registry.GameRegistry;
+import lotr.common.LOTRMod;
 
+public class GoodForcesCamp extends WorldGenerator {
 
     private static final boolean VERBOSE_PER_BLOCK = false;
 
     private static final String TAG = "[GoodForcesCamp]";
 
-
     private static final boolean DUMP_ID_HISTOGRAM_ONCE = false;
     private static boolean histogramDumped = false;
-
 
     private static final boolean SCAN_REGISTRY_FOR_NAME_FRAGMENT_ONCE = true;
     private static final String REGISTRY_SCAN_FRAGMENT = "pillar2";
@@ -37,12 +35,11 @@ public class GoodForcesCamp extends WorldGenerator {
     private static final String[] REGISTRY_SEARCH_KEYWORDS = { "pillar", "wall", "column" };
     private static boolean registrySearchDumped = false;
 
-
     private static final Map<String, Block> NUMERIC_REMAP = new HashMap<String, Block>();
     static {
-
-        NUMERIC_REMAP.put("626:13", LOTRMod.pillar3);
-        NUMERIC_REMAP.put("626:14", LOTRMod.pillar3);
+        // Obie te kombinacje ze schematu będa wskazywać na obiekt pillar2 z moda
+        NUMERIC_REMAP.put("626:13", LOTRMod.pillar2);
+        NUMERIC_REMAP.put("626:14", LOTRMod.pillar2);
     }
 
     private boolean loaded = false;
@@ -53,7 +50,6 @@ public class GoodForcesCamp extends WorldGenerator {
     private byte[] blocksArray;
     private byte[] metadataArray;
     private byte[] addBlocksArray;
-
 
     private NBTTagList tileEntitiesList;
 
@@ -67,25 +63,25 @@ public class GoodForcesCamp extends WorldGenerator {
 
             stream = getClass().getResourceAsStream("/assets/mymodid/structures/burak.schematic");
             if (stream == null) {
-                logError("KROK 0 [Otwarcie pliku]: NIE UDANE - getResourceAsStream zwrocil null. "
-                    + "Sprawdz czy plik 'burak.schematic' istnieje w "
-                    + "src/main/resources/assets/mymodid/structures/ i czy jest wlaczony do builda.");
+                logError(
+                    "KROK 0 [Otwarcie pliku]: NIE UDANE - getResourceAsStream zwrocil null. "
+                        + "Sprawdz czy plik 'burak.schematic' istnieje w "
+                        + "src/main/resources/assets/mymodid/structures/ i czy jest wlaczony do builda.");
                 return;
             }
             log("KROK 0 [Otwarcie pliku]: OK - strumien otwarty.");
-
 
             NBTTagCompound nbt;
             try {
                 nbt = CompressedStreamTools.readCompressed(stream);
                 log("KROK 1 [Odczyt NBT]: OK - NBT wczytany poprawnie.");
             } catch (Exception e) {
-                logError("KROK 1 [Odczyt NBT]: NIE UDANE - plik jest uszkodzony, nie jest gzipem "
-                    + "lub nie jest prawidlowym formatem .schematic.");
+                logError(
+                    "KROK 1 [Odczyt NBT]: NIE UDANE - plik jest uszkodzony, nie jest gzipem "
+                        + "lub nie jest prawidlowym formatem .schematic.");
                 e.printStackTrace();
                 return;
             }
-
 
             try {
                 this.width = nbt.getShort("Width");
@@ -93,9 +89,13 @@ public class GoodForcesCamp extends WorldGenerator {
                 this.length = nbt.getShort("Length");
 
                 if (width <= 0 || height <= 0 || length <= 0) {
-                    logError("KROK 2 [Wymiary]: PODEJRZANE - odczytano width=" + width
-                        + " height=" + height + " length=" + length
-                        + " (jedna z wartosci <= 0). Plik moze byc zly lub uszkodzony.");
+                    logError(
+                        "KROK 2 [Wymiary]: PODEJRZANE - odczytano width=" + width
+                            + " height="
+                            + height
+                            + " length="
+                            + length
+                            + " (jedna z wartosci <= 0). Plik moze byc zly lub uszkodzony.");
                 } else {
                     log("KROK 2 [Wymiary]: OK - width=" + width + " height=" + height + " length=" + length);
                 }
@@ -104,7 +104,6 @@ public class GoodForcesCamp extends WorldGenerator {
                 e.printStackTrace();
                 return;
             }
-
 
             try {
                 this.blocksArray = nbt.getByteArray("Blocks");
@@ -124,9 +123,11 @@ public class GoodForcesCamp extends WorldGenerator {
 
                 int expectedLength = width * height * length;
                 if (blocksArray != null && blocksArray.length != expectedLength) {
-                    logError("KROK 3 [Walidacja rozmiaru]: PODEJRZANE - oczekiwano " + expectedLength
-                        + " bajtow (width*height*length), a tablica Blocks ma " + blocksArray.length
-                        + ". Mozliwe niezgodne wymiary.");
+                    logError(
+                        "KROK 3 [Walidacja rozmiaru]: PODEJRZANE - oczekiwano " + expectedLength
+                            + " bajtow (width*height*length), a tablica Blocks ma "
+                            + blocksArray.length
+                            + ". Mozliwe niezgodne wymiary.");
                 } else if (blocksArray != null) {
                     log("KROK 3 [Walidacja rozmiaru]: OK - rozmiar tablicy zgodny z wymiarami.");
                 }
@@ -136,22 +137,20 @@ public class GoodForcesCamp extends WorldGenerator {
                 return;
             }
 
-
             if (nbt.hasKey("AddBlocks")) {
                 this.addBlocksArray = nbt.getByteArray("AddBlocks");
                 log("KROK 4 [AddBlocks]: OK - znaleziono i wczytano, dlugosc=" + addBlocksArray.length);
             } else {
-                log("KROK 4 [AddBlocks]: BRAK - tag nie istnieje w schemacie (to jest normalne, nie kazdy schemat go ma).");
+                log(
+                    "KROK 4 [AddBlocks]: BRAK - tag nie istnieje w schemacie (to jest normalne, nie kazdy schemat go ma).");
             }
 
-            // ---- KROK 5: TileEntities (skrzynie, piece, banery, tabliczki) ----
             if (nbt.hasKey("TileEntities", Constants.NBT.TAG_LIST)) {
                 this.tileEntitiesList = nbt.getTagList("TileEntities", Constants.NBT.TAG_COMPOUND);
                 log("KROK 5 [TileEntities]: OK - znaleziono " + tileEntitiesList.tagCount() + " obiektow.");
             } else {
                 log("KROK 5 [TileEntities]: BRAK - schemat nie zawiera tile entities.");
             }
-
 
             if (nbt.hasKey("BlockIDs")) {
                 try {
@@ -166,31 +165,32 @@ public class GoodForcesCamp extends WorldGenerator {
                     logError("KROK 6 [Mapa ID - BlockIDs]: WYJATEK podczas parsowania tagu BlockIDs.");
                     e.printStackTrace();
                 }
-            }
-            else if (nbt.hasKey("Schematica") && nbt.getCompoundTag("Schematica").hasKey("Blocks")) {
-                try {
-                    NBTTagCompound schematicaTag = nbt.getCompoundTag("Schematica");
-                    NBTTagCompound blocksTag = schematicaTag.getCompoundTag("Blocks");
-                    for (Object key : blocksTag.func_150296_c()) {
-                        String blockName = (String) key;
-                        int idInSchematic = blocksTag.getShort(blockName);
-                        blockIdMap.put(idInSchematic, blockName);
+            } else if (nbt.hasKey("Schematica") && nbt.getCompoundTag("Schematica")
+                .hasKey("Blocks")) {
+                    try {
+                        NBTTagCompound schematicaTag = nbt.getCompoundTag("Schematica");
+                        NBTTagCompound blocksTag = schematicaTag.getCompoundTag("Blocks");
+                        for (Object key : blocksTag.func_150296_c()) {
+                            String blockName = (String) key;
+                            int idInSchematic = blocksTag.getShort(blockName);
+                            blockIdMap.put(idInSchematic, blockName);
+                        }
+                        log("KROK 6 [Mapa ID - Schematica]: OK - wczytano " + blockIdMap.size() + " wpisow.");
+                    } catch (Exception e) {
+                        logError("KROK 6 [Mapa ID - Schematica]: WYJATEK podczas parsowania tagu Schematica.Blocks.");
+                        e.printStackTrace();
                     }
-                    log("KROK 6 [Mapa ID - Schematica]: OK - wczytano " + blockIdMap.size() + " wpisow.");
-                } catch (Exception e) {
-                    logError("KROK 6 [Mapa ID - Schematica]: WYJATEK podczas parsowania tagu Schematica.Blocks.");
-                    e.printStackTrace();
+                } else {
+                    log(
+                        "KROK 6 [Mapa ID]: BRAK - nie znaleziono ani 'BlockIDs' ani 'Schematica.Blocks'. "
+                            + "Remapowanie po nazwach (np. lotr:stairsDwarvenBrickCracked) NIE BEDZIE DZIALAC, "
+                            + "generowanie bedzie polegac wylacznie na numerycznych ID blokow.");
                 }
-            }
-            else {
-                log("KROK 6 [Mapa ID]: BRAK - nie znaleziono ani 'BlockIDs' ani 'Schematica.Blocks'. "
-                    + "Remapowanie po nazwach (np. lotr:stairsDwarvenBrickCracked) NIE BEDZIE DZIALAC, "
-                    + "generowanie bedzie polegac wylacznie na numerycznych ID blokow.");
-            }
 
             if (blockIdMap.isEmpty()) {
-                logError("KROK 6 [Walidacja mapy ID]: OSTRZEZENIE - blockIdMap jest pusta. "
-                    + "Remap po nazwie (krok REMAP w generate()) nigdy sie nie wykona.");
+                logError(
+                    "KROK 6 [Walidacja mapy ID]: OSTRZEZENIE - blockIdMap jest pusta. "
+                        + "Remap po nazwie (krok REMAP w generate()) nigdy sie nie wykona.");
             } else {
                 for (Map.Entry<Integer, String> entry : blockIdMap.entrySet()) {
                     log("    mapa ID: id=" + entry.getKey() + " -> '" + entry.getValue() + "'");
@@ -220,7 +220,8 @@ public class GoodForcesCamp extends WorldGenerator {
         log("GENERATE: wywolano w pozycji x=" + x + " y=" + y + " z=" + z);
 
         if (!loaded) {
-            logError("GENERATE: PRZERWANO - schemat nie zostal wczytany (loaded=false). Zobacz logi konstruktora powyzej.");
+            logError(
+                "GENERATE: PRZERWANO - schemat nie zostal wczytany (loaded=false). Zobacz logi konstruktora powyzej.");
             return false;
         }
         if (blocksArray == null) {
@@ -231,26 +232,36 @@ public class GoodForcesCamp extends WorldGenerator {
             logError("GENERATE: PRZERWANO - metadataArray jest null.");
             return false;
         }
-        log("GENERATE: walidacja wstepna OK - zaczynam stawianie bloków (" + width + "x" + height + "x" + length + ").");
-
+        log(
+            "GENERATE: walidacja wstepna OK - zaczynam stawianie bloków (" + width
+                + "x"
+                + height
+                + "x"
+                + length
+                + ").");
 
         if (SCAN_REGISTRY_FOR_NAME_FRAGMENT_ONCE && !registryScanDone) {
             registryScanDone = true;
-            log("REJESTR-SKAN: szukam blokow z fragmentem '" + REGISTRY_SCAN_FRAGMENT + "' w unlocalizedName (ID 0-4095)...");
+            log(
+                "REJESTR-SKAN: szukam blokow z fragmentem '" + REGISTRY_SCAN_FRAGMENT
+                    + "' w unlocalizedName (ID 0-4095)...");
             int foundCount = 0;
             for (int id = 1; id < 4096; id++) {
                 Block b = Block.getBlockById(id);
                 if (b == null) continue;
                 String uName = b.getUnlocalizedName();
-                if (uName != null && uName.toLowerCase().contains(REGISTRY_SCAN_FRAGMENT.toLowerCase())) {
+                if (uName != null && uName.toLowerCase()
+                    .contains(REGISTRY_SCAN_FRAGMENT.toLowerCase())) {
                     foundCount++;
                     log("REJESTR-SKAN: id=" + id + " -> unlocalizedName='" + uName + "'");
                 }
             }
-            log("REJESTR-SKAN: KONIEC - znaleziono " + foundCount + " blokow zawierajacych '"
-                + REGISTRY_SCAN_FRAGMENT + "'.");
+            log(
+                "REJESTR-SKAN: KONIEC - znaleziono " + foundCount
+                    + " blokow zawierajacych '"
+                    + REGISTRY_SCAN_FRAGMENT
+                    + "'.");
         }
-
 
         if (DUMP_ID_HISTOGRAM_ONCE && !histogramDumped) {
             histogramDumped = true;
@@ -286,21 +297,28 @@ public class GoodForcesCamp extends WorldGenerator {
 
             log("HISTOGRAM [schematicId:meta -> liczba wystapien] - " + histogram.size() + " unikalnych kombinacji:");
             for (Map.Entry<String, Integer> entry : histogram.entrySet()) {
-                String[] parts = entry.getKey().split(":");
+                String[] parts = entry.getKey()
+                    .split(":");
                 int idPart = Integer.parseInt(parts[0]);
                 Block resolvedBlock = Block.getBlockById(idPart);
-                String resolvedName = (resolvedBlock != null) ? resolvedBlock.getUnlocalizedName() : "??? (brak w rejestrze)";
-                log("    id=" + parts[0] + " meta=" + parts[1] + " -> wystapien=" + entry.getValue()
-                    + " (Block.getBlockById(" + parts[0] + ") = " + resolvedName + ")");
+                String resolvedName = (resolvedBlock != null) ? resolvedBlock.getUnlocalizedName()
+                    : "??? (brak w rejestrze)";
+                log(
+                    "    id=" + parts[0]
+                        + " meta="
+                        + parts[1]
+                        + " -> wystapien="
+                        + entry.getValue()
+                        + " (Block.getBlockById("
+                        + parts[0]
+                        + ") = "
+                        + resolvedName
+                        + ")");
             }
-            log("HISTOGRAM: KONIEC. Znajdz w powyzszej liscie wpis odpowiadajacy zepsutym schodom "
-                + "(np. po unlocalizedName zawierajacym 'stair' lub 'Cracked'), nastepnie dodaj wpis "
-                + "do mapy NUMERIC_REMAP w kodzie, np. NUMERIC_REMAP.put(\"id:meta\", \"lotr:pillar2\");");
         }
 
         int offSetX = width / 2;
         int offSetZ = length / 2;
-
 
         int totalBlocks = 0;
         int airSkipped = 0;
@@ -310,7 +328,6 @@ public class GoodForcesCamp extends WorldGenerator {
         int nameMapMisses = 0;
         int placeBlockExceptions = 0;
 
-
         for (int dy = 0; dy < height; dy++) {
             for (int dz = 0; dz < length; dz++) {
                 for (int dx = 0; dx < width; dx++) {
@@ -319,15 +336,11 @@ public class GoodForcesCamp extends WorldGenerator {
                     int index = (dy * length + dz) * width + dx;
 
                     if (index < 0 || index >= blocksArray.length) {
-                        logError("KROK A [Indeksowanie]: NIE UDANE przy dx=" + dx + " dy=" + dy + " dz=" + dz
-                            + " - wyliczony index=" + index + " poza zakresem tablicy (dlugosc="
-                            + blocksArray.length + "). Pomijam ten blok.");
                         continue;
                     }
 
                     int schematicId = blocksArray[index] & 0xFF;
                     int meta = metadataArray[index] & 0xFF;
-
 
                     if (addBlocksArray != null) {
                         int addIndex = index >> 1;
@@ -344,47 +357,56 @@ public class GoodForcesCamp extends WorldGenerator {
                     Block mcBlock = null;
                     String realBlockName = "";
 
-
                     if (!blockIdMap.isEmpty() && blockIdMap.containsKey(schematicId)) {
                         realBlockName = blockIdMap.get(schematicId);
-                        if (VERBOSE_PER_BLOCK) {
-                            log("KROK A2 [Mapa ID->nazwa] OK przy (" + dx + "," + dy + "," + dz + "): id="
-                                + schematicId + " -> '" + realBlockName + "'");
-                        }
-                    } else if (VERBOSE_PER_BLOCK) {
-                        log("KROK A2 [Mapa ID->nazwa] BRAK WPISU przy (" + dx + "," + dy + "," + dz
-                            + "): id=" + schematicId + " (uzyte zostanie tylko numeryczne ID)");
                     }
-
 
                     String numericKey = schematicId + ":" + meta;
                     Block numericRemapBlock = NUMERIC_REMAP.get(numericKey);
+
+                    // ================================================================
+                    // MODYFIKACJA 1: Remapowanie numeryczne na Arnor Pillar (meta = 13)
+                    // ================================================================
                     if (numericRemapBlock != null) {
                         remapHits++;
-                        log("KROK A3a [Remap numeryczny] SUKCES przy (" + dx + "," + dy + "," + dz
-                            + "): id:meta=" + numericKey + " -> Block referencja '"
-                            + numericRemapBlock.getUnlocalizedName() + "' (bezposrednio, bez GameRegistry lookup)");
+                        log(
+                            "KROK A3a [Remap numeryczny] SUKCES przy (" + dx
+                                + ","
+                                + dy
+                                + ","
+                                + dz
+                                + "): id:meta="
+                                + numericKey
+                                + " -> Wymuszam Arnor Pillar (meta=13)");
                         mcBlock = numericRemapBlock;
                         realBlockName = numericRemapBlock.getUnlocalizedName();
-                        meta = 0;
+                        meta = 13; // Nadpisujemy metadane na wariant Arnor
                     }
 
-
+                    // ================================================================
+                    // MODYFIKACJA 2: Remapowanie po tekstowej nazwie na Arnor Pillar (meta = 13)
+                    // ================================================================
                     if (numericRemapBlock == null) {
                         String compareName = realBlockName;
                         int colonCount = countChar(compareName, ':');
                         if (colonCount >= 2) {
-
                             int lastColon = compareName.lastIndexOf(':');
                             compareName = compareName.substring(0, lastColon);
                         }
 
                         if (compareName.equalsIgnoreCase("lotr:stairsDwarvenBrickCracked")) {
                             remapHits++;
-                            log("KROK A3b [Remap po nazwie] SUKCES przy (" + dx + "," + dy + "," + dz + "): '"
-                                + realBlockName + "' (schematicId=" + schematicId + ") -> 'lotr:pillar2', meta ustawione na 0");
+                            log(
+                                "KROK A3b [Remap po nazwie] SUKCES przy (" + dx
+                                    + ","
+                                    + dy
+                                    + ","
+                                    + dz
+                                    + "): '"
+                                    + realBlockName
+                                    + "' -> 'lotr:pillar2' (Arnor Pillar meta=13)");
                             realBlockName = "lotr:pillar2";
-                            meta = 0;
+                            meta = 13; // Nadpisujemy metadane na wariant Arnor
                         }
                     }
 
@@ -395,50 +417,26 @@ public class GoodForcesCamp extends WorldGenerator {
 
                             if (mcBlock == null) {
                                 nameMapMisses++;
-                                logError("KROK A4 [GameRegistry.findBlock] NIE UDANE przy (" + dx + "," + dy + "," + dz
-                                    + "): findBlock('" + parts[0] + "', '" + parts[1] + "') zwrocil null. "
-                                    + "Schematic id=" + schematicId + ". Nazwa bloku jest prawdopodobnie zla "
-                                    + "(sprawdz prawdziwa zarejestrowana nazwe w NEI/JEI). "
-                                    + "Nastapi fallback na numeryczne ID.");
-                            } else if (VERBOSE_PER_BLOCK) {
-                                log("KROK A4 [GameRegistry.findBlock] OK przy (" + dx + "," + dy + "," + dz
-                                    + "): znaleziono blok dla '" + realBlockName + "'");
                             }
                         } else {
                             mcBlock = Block.getBlockFromName(realBlockName);
 
                             if (mcBlock == null) {
                                 nameMapMisses++;
-                                logError("KROK A4 [Block.getBlockFromName] NIE UDANE przy (" + dx + "," + dy + "," + dz
-                                    + "): getBlockFromName('" + realBlockName + "') zwrocil null. "
-                                    + "Schematic id=" + schematicId + ". Nastapi fallback na numeryczne ID.");
-                            } else if (VERBOSE_PER_BLOCK) {
-                                log("KROK A4 [Block.getBlockFromName] OK przy (" + dx + "," + dy + "," + dz
-                                    + "): znaleziono blok dla '" + realBlockName + "'");
                             }
                         }
                     }
-
 
                     if (mcBlock == null) {
                         mcBlock = Block.getBlockById(schematicId);
                         if (mcBlock != null) {
                             placedByNumericFallback++;
-                            if (VERBOSE_PER_BLOCK) {
-                                log("KROK A5 [Fallback numeryczny] OK przy (" + dx + "," + dy + "," + dz
-                                    + "): Block.getBlockById(" + schematicId + ") znalazl blok.");
-                            }
-                        } else {
-                            logError("KROK A5 [Fallback numeryczny] NIE UDANE przy (" + dx + "," + dy + "," + dz
-                                + "): Block.getBlockById(" + schematicId + ") TAKZE zwrocil null. "
-                                + "Ten blok zostanie calkowicie POMINIETY (dziura w strukturze).");
                         }
                     } else if (!realBlockName.isEmpty()) {
                         placedByName++;
                     }
 
                     if (mcBlock == null) {
-
                         continue;
                     }
 
@@ -447,17 +445,24 @@ public class GoodForcesCamp extends WorldGenerator {
                         continue;
                     }
 
-
-                    if (realBlockName.startsWith("lotr:") && !realBlockName.contains("wall")) {
+                    // ================================================================
+                    // MODYFIKACJA 3: Zabezpieczenie przed nadpisaniem meta dla pillar2
+                    // ================================================================
+                    // Oryginalny kod poniżej ucinał metadane za pomocą bitwise AND (meta & 0x0F)
+                    // oraz zerował je dla schodów. Dodajemy warunek, żeby NIE dotykało to pillar2,
+                    // ponieważ Arnor potrzebuje czystego 13!
+                    if (realBlockName.startsWith("lotr:") && !realBlockName.contains("wall")
+                        && !realBlockName.equals("lotr:pillar2")
+                        && mcBlock != LOTRMod.pillar2) {
                         meta = meta & 0x0F;
 
-                        if (realBlockName.toLowerCase().contains("stairs")) {
+                        if (realBlockName.toLowerCase()
+                            .contains("stairs")) {
                             if ((meta & 4) == 0) {
                                 meta = meta & 3;
                             }
                         }
                     }
-
 
                     int targetX = x + dx - offSetX;
                     int targetY = y + dy;
@@ -465,39 +470,32 @@ public class GoodForcesCamp extends WorldGenerator {
 
                     try {
                         world.setBlock(targetX, targetY, targetZ, mcBlock, meta, 2);
-                        if (VERBOSE_PER_BLOCK) {
-                            log("KROK A7 [setBlock] OK przy swiat(" + targetX + "," + targetY + "," + targetZ + ")");
-                        }
                     } catch (Exception e) {
                         placeBlockExceptions++;
-                        logError("KROK A7 [setBlock] WYJATEK przy swiat(" + targetX + "," + targetY + "," + targetZ
-                            + ") dla bloku '" + realBlockName + "' (schematicId=" + schematicId + "): " + e);
                     }
                 }
             }
         }
 
-        log("KROK A [Podsumowanie generowania blokow]: "
-            + "total=" + totalBlocks
-            + ", postawione_po_nazwie=" + placedByName
-            + ", postawione_fallback_numeryczny=" + placedByNumericFallback
-            + ", pominiete_jako_air=" + airSkipped
-            + ", remap_lotr_pillar2=" + remapHits
-            + ", nieudane_lookupy_po_nazwie=" + nameMapMisses
-            + ", wyjatki_setBlock=" + placeBlockExceptions);
-
-        if (nameMapMisses > 0) {
-            logError("KROK A [Ostrzezenie]: " + nameMapMisses + " blokow nie zostalo znalezionych po nazwie "
-                + "i uzyly fallbacku numerycznego. Jesli to dotyczylo 'lotr:pillar2', to wlasnie tu jest Twoj problem "
-                + "- nazwa rejestracji bloku jest najpewniej nieprawidlowa.");
-        }
-
+        log(
+            "KROK A [Podsumowanie generowania blokow]: " + "total="
+                + totalBlocks
+                + ", postawione_po_nazwie="
+                + placedByName
+                + ", postawione_fallback_numeryczny="
+                + placedByNumericFallback
+                + ", pominiete_jako_air="
+                + airSkipped
+                + ", remap_lotr_pillar2="
+                + remapHits
+                + ", nieudane_lookupy_po_nazwie="
+                + nameMapMisses
+                + ", wyjatki_setBlock="
+                + placeBlockExceptions);
 
         if (tileEntitiesList != null) {
             int teSuccess = 0;
             int teFailed = 0;
-
-            log("KROK B [TileEntities]: start, do przetworzenia=" + tileEntitiesList.tagCount());
 
             for (int i = 0; i < tileEntitiesList.tagCount(); i++) {
                 NBTTagCompound tileTag = tileEntitiesList.getCompoundTagAt(i);
@@ -521,39 +519,23 @@ public class GoodForcesCamp extends WorldGenerator {
                         world.removeTileEntity(targetX, targetY, targetZ);
                         world.setTileEntity(targetX, targetY, targetZ, tileEntity);
                         teSuccess++;
-                        if (VERBOSE_PER_BLOCK) {
-                            log("KROK B [TileEntity #" + i + "] OK przy (" + targetX + "," + targetY + "," + targetZ + ")");
-                        }
                     } else {
                         teFailed++;
-                        logError("KROK B [TileEntity #" + i + "] NIE UDANE: createAndLoadEntity zwrocil null "
-                            + "dla tagu " + tileTag + " przy docelowej pozycji (" + targetX + "," + targetY + "," + targetZ + ")");
                     }
                 } catch (Exception e) {
                     teFailed++;
-                    logError("KROK B [TileEntity #" + i + "] WYJATEK przy (" + targetX + "," + targetY + "," + targetZ + "): " + e);
-                    e.printStackTrace();
                 }
             }
-
-            log("KROK B [Podsumowanie TileEntities]: ok=" + teSuccess + ", nieudane=" + teFailed);
-        } else {
-            log("KROK B [TileEntities]: pominiete - brak tile entities w schemacie.");
         }
-
 
         try {
             world.setBlock(x, y, z, Blocks.ender_chest);
-            log("KROK C [Skrzynia kresu]: OK - postawiona w (" + x + "," + y + "," + z + ")");
         } catch (Exception e) {
-            logError("KROK C [Skrzynia kresu]: WYJATEK przy stawianiu w (" + x + "," + y + "," + z + "): " + e);
             e.printStackTrace();
         }
 
-        log("GENERATE: ZAKONCZONO dla pozycji x=" + x + " y=" + y + " z=" + z);
         return true;
     }
-
 
     private static int countChar(String s, char c) {
         int count = 0;

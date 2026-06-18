@@ -2,6 +2,7 @@ package com.myname.mymodid;
 
 import java.util.Random;
 
+import lotr.common.world.biome.LOTRBiomeGenBreeland;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -31,7 +32,7 @@ public class ModedWorldGenerator implements IWorldGenerator {
 
         if (random.nextInt(20) == 0) {
 
-            if (Biome instanceof LOTRBiomeGenShire) {
+            if (Biome instanceof LOTRBiomeGenBreeland) {
                 goodCamp.generate(world, random, x, y, z);
             }
 

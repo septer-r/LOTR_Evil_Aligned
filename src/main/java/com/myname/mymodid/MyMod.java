@@ -2,6 +2,7 @@ package com.myname.mymodid;
 
 import static com.myname.mymodid.RecipeOperations.removeRecipe;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +39,9 @@ public class MyMod {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new ModedWorldGenerator(), 0);
+        FMLCommonHandler.instance().bus().register(new PlayerEntersNewDimension());
         proxy.init(event);
+
     }
 
     @Mod.EventHandler
