@@ -30,7 +30,7 @@ public class ModedWorldGenerator implements IWorldGenerator {
 
         BiomeGenBase Biome = world.getBiomeGenForCoords(x, z);
 
-        if (random.nextInt(20) == 0) {
+        if (random.nextInt(200) == 0) {
 
             if (Biome instanceof LOTRBiomeGenBreeland) {
                 goodCamp.generate(world, random, x, y, z);

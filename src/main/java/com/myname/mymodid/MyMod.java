@@ -3,6 +3,8 @@ package com.myname.mymodid;
 import static com.myname.mymodid.RecipeOperations.removeRecipe;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.potion.Potion;
+import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,6 +24,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
     dependencies = "required-after:lotr")
 public class MyMod {
 
+    public static Potion sauronGazeEffect;
+
     public static final String MODID = "mymodid";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
@@ -31,6 +35,10 @@ public class MyMod {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         // Uruchamiamy rejestrator przedmiotów z osobnej klasy
+        int customPotionId = 28;
+
+        sauronGazeEffect = new SauronsEffect(customPotionId, true, 0x4a000000);
+
         ModItems.registerItems();
 
         proxy.preInit(event);
@@ -40,6 +48,11 @@ public class MyMod {
     public void init(FMLInitializationEvent event) {
         GameRegistry.registerWorldGenerator(new ModedWorldGenerator(), 0);
         FMLCommonHandler.instance().bus().register(new PlayerEntersNewDimension());
+        FMLCommonHandler.instance().bus().register(new SauronsGaze());
+        if(event.getSide().isClient()){
+            MinecraftForge.EVENT_BUS.register(new SauronGUIRender());
+        }
+
         proxy.init(event);
 
     }
