@@ -1,16 +1,11 @@
 package com.myname.mymodid;
 
+import com.myname.mymodid.ArmorOnPlayer.*;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRender;
-import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRenderDurnor;
-import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRenderGold;
-import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRenderMithirll;
-import com.myname.mymodid.ArmorOnPlayer.WickedDwarfArmorRenderSilver;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -21,6 +16,15 @@ public class ModItems {
     public static Item hobbitSlayer;
 
     public static Item evilQuestBook;
+
+    public static Item isengard_Berserker_Chestplate;
+    public static Item isengard_Berserker_Leggings;
+    public static Item isengard_Berserker_Boots;
+
+    public static Item morgoth_Helmet;
+    public static Item morgoth_Chestplate;
+    public static Item morgoth_Leggings;
+    public static Item morgoth_Boots;
 
     public static Item barrow_Wight_Helmet;
     public static Item barrow_Wight_Chestplate;
@@ -64,23 +68,53 @@ public class ModItems {
             .setTextureName(MyMod.MODID + ":evil_Quest_Book")
             .setCreativeTab(CreativeTabs.tabCombat);
 
-        barrow_Wight_Helmet = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 0)
+        isengard_Berserker_Chestplate = new IsengardBerserkerArmorRender(ModMaterials.ISENGARD_BERSERKER, 1, 1)
+            .setUnlocalizedName("isengard_Berserker_Chestplate")
+            .setTextureName(MyMod.MODID + ":isengard_Berserker_Chestplate")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        isengard_Berserker_Leggings = new IsengardBerserkerArmorRender(ModMaterials.ISENGARD_BERSERKER, 2, 2)
+            .setUnlocalizedName("isengard_Berserker_Leggings")
+            .setTextureName(MyMod.MODID + ":isengard_Berserker_Leggings")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        isengard_Berserker_Boots = new IsengardBerserkerArmorRender(ModMaterials.ISENGARD_BERSERKER, 1, 3)
+            .setUnlocalizedName("isengard_Berserker_Boots")
+            .setTextureName(MyMod.MODID + ":isengard_Berserker_Boots")
+            .setCreativeTab(CreativeTabs.tabCombat);
+
+        morgoth_Helmet = new MorgothArmorRender(ModMaterials.MORGOTH, 1, 0)
+            .setUnlocalizedName("morgoth_Helmet")
+            .setTextureName(MyMod.MODID + ":morgoth_Helmet")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        morgoth_Chestplate = new MorgothArmorRender(ModMaterials.MORGOTH, 1, 1)
+            .setUnlocalizedName("morgoth_Chestplate")
+            .setTextureName(MyMod.MODID + ":morgoth_Chestplate")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        morgoth_Leggings = new MorgothArmorRender(ModMaterials.MORGOTH, 2, 2)
+            .setUnlocalizedName("morgoth_Leggings")
+            .setTextureName(MyMod.MODID + ":morgoth_Leggings")
+            .setCreativeTab(CreativeTabs.tabCombat);
+        morgoth_Boots = new MorgothArmorRender(ModMaterials.MORGOTH, 1, 3)
+            .setUnlocalizedName("morgoth_Boots")
+            .setTextureName(MyMod.MODID + ":morgoth_Boots")
+            .setCreativeTab(CreativeTabs.tabCombat);
+
+        barrow_Wight_Helmet = new BarrowWightArmorRender(ModMaterials.BARROW_WIGHT, 1, 0)
             .setUnlocalizedName("barrow_Wight_Helmet")
             .setTextureName(MyMod.MODID + ":barrow_Wight_Helmet")
             .setCreativeTab(CreativeTabs.tabCombat);
-        barrow_Wight_Chestplate = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 1)
+        barrow_Wight_Chestplate = new BarrowWightArmorRender(ModMaterials.BARROW_WIGHT, 1, 1)
             .setUnlocalizedName("barrow_Wight_Chestplate")
             .setTextureName(MyMod.MODID + ":barrow_Wight_Chestplate")
             .setCreativeTab(CreativeTabs.tabCombat);
-        barrow_Wight_Leggings = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 2)
+        barrow_Wight_Leggings = new BarrowWightArmorRender(ModMaterials.BARROW_WIGHT, 2, 2)
             .setUnlocalizedName("barrow_Wight_Leggings")
             .setTextureName(MyMod.MODID + ":barrow_Wight_Leggings")
             .setCreativeTab(CreativeTabs.tabCombat);
-        barrow_Wight_Boots = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 3)
+        barrow_Wight_Boots = new BarrowWightArmorRender(ModMaterials.BARROW_WIGHT, 1, 3)
             .setUnlocalizedName("barrow_Wight_Boots")
             .setTextureName(MyMod.MODID + ":barrow_Wight_Boots")
             .setCreativeTab(CreativeTabs.tabCombat);
-        barrow_Wight_Scraps = new WickedDwarfArmorRenderSilver(ModMaterials.EVIL_DWARF, 1, 3)
+        barrow_Wight_Scraps = new WickedDwarfArmorRenderSilver(ModMaterials.BARROW_WIGHT, 1, 3)
             .setUnlocalizedName("barrow_Wight_Scraps")
             .setTextureName(MyMod.MODID + ":barrow_Wight_Scraps")
             .setCreativeTab(CreativeTabs.tabCombat);
@@ -184,6 +218,15 @@ public class ModItems {
             .setCreativeTab(CreativeTabs.tabCombat);
 
         register(evilQuestBook, "evil_Quest_Book");
+
+        register(isengard_Berserker_Chestplate, "isengard_Berserker_Chestplate");
+        register(isengard_Berserker_Leggings, "isengard_Berserker_Leggings");
+        register(isengard_Berserker_Boots, "isengard_Berserker_Boots");
+
+        register(morgoth_Helmet,"morgoth_Helmet");
+        register(morgoth_Chestplate, "morgoth_Chestplate");
+        register(morgoth_Leggings, "morgoth_Leggings");
+        register(morgoth_Boots, "morgoth_Boots");
 
         register(barrow_Wight_Helmet, "barrow_Wight_Helmet");
         register(barrow_Wight_Chestplate, "barrow_Wight_Chestplate");
