@@ -31,6 +31,15 @@ item.barrow_Wight_Leggings.name=Barrow Wight Leggings
 item.barrow_Wight_Boots.name=Barrow Wight Boots
 item.barrow_Wight_Scraps.name=Barrow Wight Scraps
 
+item.morgoth_Helmet.name=Morgoth Cat Ears
+item.morgoth_Chestplate.name=Morgoth Leotard
+item.morgoth_Leggings.name=Morgoth Pantyhose
+item.morgoth_Boots.name=Morgoth High Heels
+
+item.isengard_Berserker_Chestplate.name=Isengard Berserker Chestplate
+item.isengard_Berserker_Leggings.name=Isengard Berserker Leggings
+item.isengard_Berserker_Boots.name=Isengard Berserker Boots
+
 item.evilQuestBook.name=Evil QuestBook
 
 
