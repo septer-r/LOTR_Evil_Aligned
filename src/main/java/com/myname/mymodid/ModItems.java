@@ -4,6 +4,8 @@ import com.myname.mymodid.ArmorOnPlayer.*;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
+import net.minecraft.item.ItemFood;
+import net.minecraft.potion.Potion;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -62,7 +64,15 @@ public class ModItems {
     public static Item wicked_Dwarf_Leggings_Durnor;
     public static Item wicked_Dwarf_Boots_Durnor;
 
+    public static Item trollsDesert;
+
     public static void registerItems() {
+
+
+        trollsDesert = new ItemFood(3,0.6F,false)
+            .setUnlocalizedName("trolls_Desert")
+            .setTextureName(MyMod.MODID+ ":trolls_Desert")
+            .setCreativeTab(CreativeTabs.tabFood);
 
         evilQuestBook = new ItemEvilQuestBook().setUnlocalizedName("evilQuestBook")
             .setTextureName(MyMod.MODID + ":evil_Quest_Book")
@@ -263,6 +273,8 @@ public class ModItems {
         register(wicked_Dwarf_Chestplate_Durnor, "wicked_Dwarf_Chestplate_Durnor");
         register(wicked_Dwarf_Leggings_Durnor, "wicked_Dwarf_Leggings_Durnor");
         register(wicked_Dwarf_Boots_Durnor, "wicked_Dwarf_Boots_Durnor");
+
+        register(trollsDesert,"trolls_Desert");
 
     }
 

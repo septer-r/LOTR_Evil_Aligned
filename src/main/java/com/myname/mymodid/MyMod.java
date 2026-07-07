@@ -3,6 +3,8 @@ package com.myname.mymodid;
 import static com.myname.mymodid.RecipeOperations.removeRecipe;
 
 import cpw.mods.fml.common.FMLCommonHandler;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
 import org.apache.logging.log4j.LogManager;
@@ -52,6 +54,16 @@ public class MyMod {
         if(event.getSide().isClient()){
             MinecraftForge.EVENT_BUS.register(new SauronGUIRender());
         }
+
+
+        GameRegistry.addRecipe(new ItemStack(ModItems.trollsDesert, 1), new Object[] {
+            "  S",
+            "  C",
+            "  M",
+            'S', Items.spider_eye,
+            'C', Items.sugar,
+            'M', Items.rotten_flesh
+        });
 
         proxy.init(event);
 
