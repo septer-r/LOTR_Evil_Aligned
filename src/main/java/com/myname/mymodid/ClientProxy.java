@@ -1,5 +1,8 @@
 package com.myname.mymodid;
 
+import com.myname.mymodid.Entity.EntitySepteRR;
+import com.myname.mymodid.EntityRender.RenderSepteRR;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -12,6 +15,7 @@ public class ClientProxy extends CommonProxy {
         super.preInit(event);
 
         MinecraftForgeClient.registerItemRenderer(ModItems.nerdSword, new NerdSwordRenderer());
+        RenderingRegistry.registerEntityRenderingHandler(EntitySepteRR.class, new RenderSepteRR());
     }
 
     @Override
